@@ -94,6 +94,7 @@ module Lua
       rule(:decimal_exponent) {
         match('[eE]') >> match('[-+]').maybe >> decimal_integer
       }
+
       # literal_string
       rule(:literal_string) {
         short_literal_string
