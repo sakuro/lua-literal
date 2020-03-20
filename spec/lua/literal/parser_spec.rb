@@ -9,10 +9,5 @@ RSpec.describe Lua::Literal::Parser do
     it 'parses empty literal "{}"' do
       expect(parser.parse('{}')).to eq({})
     end
-    it 'parses field: exp = exp' do
-      expect(parser.parse <<-LUA).to eq(fields: 'a' => 1)
-        { a = 1 }
-      LUA
-    end
   end
 end
