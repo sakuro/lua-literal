@@ -10,7 +10,7 @@ module Lua
 
       # table_constructor ::= '{' [fieldlist] '}'
       rule(:table_constructor) {
-        (space? >> str('{') >> space? >> fieldlist.maybe.as(:fields) >> space? >> str('}') >> space?).as(:table)
+        (str('{') >> space? >> fieldlist.maybe.as(:fields) >> space? >> str('}')).as(:table)
       }
 
       # fieldlist ::= field {fieldsep field} [fieldsep]
@@ -41,12 +41,15 @@ module Lua
       # -- exp ::= unop exp
       # -- prefixexp ::= var | functioncall | '(' exp ')'
       rule(:exp) {
-        table_constructor |
-        literal_nil |
-        literal_false |
-        literal_true |
-        numeral |
-        literal_string
+        space? >>
+        (
+          table_constructor |
+          literal_nil |
+          literal_false |
+          literal_true |
+          numeral |
+          literal_string
+        ) >> space?
       }
 
       rule(:literal_nil) {
