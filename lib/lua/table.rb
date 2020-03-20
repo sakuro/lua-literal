@@ -1,4 +1,6 @@
-require "lua/table/version"
+# frozen_string_literal: true
+
+require 'lua/table/version'
 
 module Lua
   module Table

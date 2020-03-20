@@ -1,0 +1,92 @@
+require: 'rubocop-rspec'
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  DefaultFormatter: simple
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  EnabledByDefault: true
+  Exclude:
+    - bin/*
+    - spec/spec_helper.rb
+    - vendor/bundle/**/*
+  ExtraDetails: true
+  TargetRubyVersion: 2.7
+  UseCache: true
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: true
+  AllowHeredoc: true
+  AllowURI: true
+  IgnoreCopDirectives: true
+  IgnoredPatterns:
+    - '%x'
+  URISchemes:
+    - http
+    - https
+
+Layout/MultilineAssignmentLayout:
+  Enabled: true
+
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+RSpec/ExpectActual:
+  Enabled: true
+
+Style/Documentation:
+  Exclude:
+    - spec/**/*
+    - lib/lua/table/version.rb
+
+Style/CommandLiteral:
+  Enabled: true
+  EnforcedStyle: percent_x
+
+Style/Copyright:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoredMethods:
+    # language core
+    - require
+    - require_relative
+    # gem/bundler
+    - gem
+    - source
+    - add_development_dependency
+    - add_runtime_dependency
+    # rake
+    - task
+    # rspec
+    - be
+    - describe
+    - eq
+    - it
+    - to
+    - not_to
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+
+Style/RedundantPercentQ:
+  Enabled: true
+
+Style/RegexpLiteral:
+  Enabled: true
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
