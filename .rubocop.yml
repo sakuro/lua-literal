@@ -31,11 +31,28 @@ Layout/LineLength:
 Layout/MultilineAssignmentLayout:
   Enabled: true
 
+Layout/MultilineOperationIndentation:
+  Enabled: false
+  # EnforcedStyle: aligned
+  # This does not work as expected for vertically aligned _alternative_ rules.
+  # And it won't be fixed: https://github.com/rubocop-hq/rubocop/issues/7094
+
 Layout/SpaceAroundOperators:
+  Enabled: true
+
+RSpec/EmptyLineAfterExample:
   Enabled: true
 
 RSpec/ExpectActual:
   Enabled: true
+
+Style/AsciiComments:
+  Enabled: true
+
+Style/BlockDelimiters:
+  Enabled: true
+  IgnoredMethods:
+    - rule
 
 Style/Documentation:
   Exclude:
@@ -45,6 +62,9 @@ Style/Documentation:
 Style/CommandLiteral:
   Enabled: true
   EnforcedStyle: percent_x
+
+Style/CommentAnnotation:
+  Enabled: true
 
 Style/Copyright:
   Enabled: false
