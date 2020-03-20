@@ -71,7 +71,7 @@ module Lua
       }
 
       rule(:decimal_numeral) {
-        decimal_integer.as(:integer) | decimal_float.as(:float)
+        decimal_float.as(:float) | decimal_integer.as(:integer)
       }
 
       rule(:decimal_figure) {
