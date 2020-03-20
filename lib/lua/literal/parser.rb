@@ -3,10 +3,10 @@
 require 'parslet'
 
 module Lua
-  module Table
+  module Literal
     # https://www.lua.org/manual/5.3/manual.html
     class Parser < Parslet::Parser # rubocop:disable Metrics/ClassLength
-      root :table_constructor
+      root :exp
 
       # table_constructor ::= '{' [fieldlist] '}'
       rule(:table_constructor) {
@@ -35,7 +35,7 @@ module Lua
       # exp ::= Numeral
       # exp ::= LiteralString
       # -- exp ::= functiondef
-      # exp ::= tableconstructor
+      # exp ::= table_constructor
       # -- exp ::= '...'
       # -- exp ::= exp binop exp
       # -- exp ::= unop exp

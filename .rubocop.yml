@@ -57,7 +57,7 @@ Style/BlockDelimiters:
 Style/Documentation:
   Exclude:
     - spec/**/*
-    - lib/lua/table/version.rb
+    - lib/lua/literal/version.rb
 
 Style/CommandLiteral:
   Enabled: true

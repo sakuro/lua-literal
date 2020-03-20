@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'lua/table/version'
+require 'lua/literal/version'
 
 module Lua
-  module Table
+  module Literal
     class Error < StandardError; end
     # Your code goes here...
   end
 end
 
-require 'lua/table/parser'
-require 'lua/table/transform'
+require 'lua/literal/parser'
+require 'lua/literal/transform'

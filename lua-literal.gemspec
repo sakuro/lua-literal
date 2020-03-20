@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative 'lib/lua/table/version'
+require_relative 'lib/lua/literal/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'lua-table'
-  spec.version       = Lua::Table::VERSION
+  spec.name          = 'lua-literal'
+  spec.version       = Lua::Literal::VERSION
   spec.authors       = ['OZAWA Sakuro']
   spec.email         = ['sakuro@2238.club']
 
-  spec.summary       = 'Parser for Lua tables'
+  spec.summary       = 'Parser for Lua literals'
   spec.description   = <<~DESCRIPTION
-    Lua-table provides parser for the _table_ data structure of Lua.
+    Lua-literal provides parser for the literals of Lua language.
   DESCRIPTION
-  spec.homepage      = 'https://github.com/sakuro/lua-table'
+  spec.homepage      = 'https://github.com/sakuro/lua-literal'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/sakuro/lua-table.git'
-  spec.metadata['changelog_uri'] = 'https://github.com/sakuro/lua-table/blob/master/CHANGES.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/sakuro/lua-literal.git'
+  spec.metadata['changelog_uri'] = 'https://github.com/sakuro/lua-literal/blob/master/CHANGES.md'
 
   spec.files = Dir.chdir(__dir__) { %x(git ls-files -z).split("\x0").grep_v(/^spec\//) }
   spec.require_paths = ['lib']

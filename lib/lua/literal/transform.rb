@@ -3,7 +3,7 @@
 require 'parslet'
 
 module Lua
-  module Table
+  module Literal
     class Transform < Parslet::Transform
     end
   end
