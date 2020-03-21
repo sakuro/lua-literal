@@ -23,6 +23,8 @@ Gem::Specification.new do |spec|
   spec.files = Dir.chdir(__dir__) { %x(git ls-files -z).split("\x0").grep_v(/^spec\//) }
   spec.require_paths = ['lib']
 
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 0.80.0'
