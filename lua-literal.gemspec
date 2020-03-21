@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['OZAWA Sakuro']
   spec.email         = ['sakuro@2238.club']
 
-  spec.summary       = 'Parser for Lua literals'
+  spec.summary       = 'Converter for Lua literals'
   spec.description   = <<~DESCRIPTION
-    Lua-literal provides parser for the literals of Lua language.
+    Lua-literal provides a class for conversion of Lua's literals to Ruby.
   DESCRIPTION
   spec.homepage      = 'https://github.com/sakuro/lua-literal'
   spec.license       = 'MIT'
