@@ -10,12 +10,12 @@ module Lua
 
       # table_constructor ::= '{' [fieldlist] '}'
       rule(:table_constructor) {
-        (str('{') >> space? >> fieldlist.maybe >> space? >> str('}')).as(:table)
+        (str('{') >> space? >> fieldlist.maybe.as(:table) >> space? >> str('}'))
       }
 
       # fieldlist ::= field {fieldsep field} [fieldsep]
       rule(:fieldlist) {
-        (field >> space? >> (fieldsep >> space? >> field).repeat).as(:fields) >> space? >> fieldsep.maybe
+        field >> space? >> (fieldsep >> space? >> field).repeat >> space? >> fieldsep.maybe
       }
 
       # field ::= '[' exp ']' '=' exp | Name '=' exp | exp

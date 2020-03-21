@@ -69,16 +69,14 @@ module Lua
         false
       }
 
-      rule(table: {fields: subtree(:fields)}) {
+      rule(table: subtree(:fields)) {
+        next {} if fields.nil?
+
         pairs = (fields.is_a?(Hash) ? [fields] : fields)
         indexed, kvs = pairs.partition {|pair| pair.key?(:indexed) }
         hash = kvs.inject({}) {|acc, pair| acc.merge(pair) }
         indexed.each.with_index(1).each {|v, i| hash[i] = v[:indexed] }
         hash
-      }
-
-      rule(table: '{}') {
-        Hash[]
       }
 
       rule(key: subtree(:key), value: subtree(:value)) {
