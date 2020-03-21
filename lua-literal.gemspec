@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 0.80.0'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.38.1'
+  spec.add_development_dependency 'yard'
 
   spec.add_runtime_dependency 'parslet', '~> 2.0.0'
 end
