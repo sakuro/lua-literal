@@ -117,6 +117,8 @@ Style/MutableConstant:
 
 Style/PercentLiteralDelimiters:
   Enabled: true
+  PreferredDelimiters:
+    '%q': '|'
 
 Style/RedundantPercentQ:
   Enabled: true
