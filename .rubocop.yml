@@ -53,6 +53,11 @@ Layout/SpaceInsideHashLiteralBraces:
 Lint/NumberConversion:
   Enabled: true
 
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*_spec.rb
+
 RSpec/EmptyLineAfterExample:
   Enabled: true
 
