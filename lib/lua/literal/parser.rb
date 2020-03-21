@@ -10,12 +10,12 @@ module Lua
 
       # table_constructor ::= '{' [fieldlist] '}'
       rule(:table_constructor) {
-        (str('{') >> space? >> fieldlist.maybe.as(:fields) >> space? >> str('}')).as(:table)
+        (str('{') >> space? >> fieldlist.maybe >> space? >> str('}')).as(:table)
       }
 
       # fieldlist ::= field {fieldsep field} [fieldsep]
       rule(:fieldlist) {
-        field >> space? >> (fieldsep >> space? >> field).repeat >> space? >> fieldsep.maybe
+        (field >> space? >> (fieldsep >> space? >> field).repeat).as(:fields) >> space? >> fieldsep.maybe
       }
 
       # field ::= '[' exp ']' '=' exp | Name '=' exp | exp
@@ -119,32 +119,32 @@ module Lua
       }
 
       rule(:character) {
-        raw_character |
         escape_sequence |
         hexadecimal_sequence |
         decimal_sequence |
-        unicode_sequence
+        unicode_sequence |
+        raw_character
       }
 
       rule(:escape_sequence) {
-        esc >> (q | qq | esc | match('[abfnrtv]'))
+        esc >> (q | qq | esc | match('[abfnrtv]')).as(:escape_sequence)
         # TODO: \z
       }
 
       rule(:hexadecimal_sequence) {
-        esc >> match('[xX]') >> hexadecimal_digit.repeat(2, 2)
+        esc >> match('[xX]') >> hexadecimal_digit.repeat(2, 2).as(:hexadecimal_sequence)
       }
 
       rule(:decimal_sequence) {
-        esc >> decimal_digit.repeat(3, 3)
+        esc >> decimal_digit.repeat(3, 3).as(:decimal_sequence)
       }
 
       rule(:unicode_sequence) {
-        esc >> match('[uU]') >> (str('{') >> hexadecimal_digit.repeat(1) >> str('}') | hexadecimal_digit.repeat(1))
+        esc >> match('[uU]') >> (str('{') >> hexadecimal_digit.repeat(1) >> str('}') | hexadecimal_digit.repeat(1)).as(:unicode_sequence)
       }
 
       rule(:raw_character) {
-        match('[^\\\'"]')
+        match('[^\\\'"]').as(:raw_character)
       }
 
       rule(:hexadecimal_digit) {
@@ -156,7 +156,7 @@ module Lua
       }
 
       rule(:name) {
-        match('[A-Za-z_]') >> match('[A-Za-z_0-9]').repeat
+        (match('[A-Za-z_]') >> match('[A-Za-z_0-9]').repeat).as(:name)
       }
 
       rule(:space) {
@@ -169,7 +169,7 @@ module Lua
       }
 
       rule(:short_comment) {
-        str('--') >> match('[^\n]').repeat >> str("\n")
+        str('--') >> match('[^\n]').repeat >> str("\n").maybe
       }
 
       rule(:space?) {
