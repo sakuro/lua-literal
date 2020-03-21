@@ -34,13 +34,6 @@ converter.convert('{a=1, b=2, ["c"]={d=3}, {e=4}, {f=5}}')
 
 These are converted to Ruby's `true`, `false` and `nil` respectively.
 
-### Tables
-
-Lua's tables are converted to Ruby's `Hash`.
-
-* Expression only fields, which are indexed by integer keys in Lua, are also stored as key-value pairs.
-* Name only keys (not in `[...]`) are converted to Ruby's `Symbol`s.
-
 ### Numerals
 
 Only decimal numerals are recognized and converted Ruby's `Integer` or `Float`.
@@ -55,6 +48,13 @@ Following escape sequences are supported.
 * C-like escape sequences
 * Hexadecimal and decimal escape sequences
 * Unicode escape sequences
+
+### Tables
+
+Lua's tables are converted to Ruby's `Hash`.
+
+* Expression only fields, which are indexed by integer keys in Lua, are also stored as key-value pairs.
+* Name only keys (not in `[...]`) are converted to Ruby's `Symbol`s.
 
 ### Comments
 
