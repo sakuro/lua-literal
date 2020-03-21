@@ -41,7 +41,7 @@ As in Lua, unary plus operator is not allowed.
 
 ### Strings
 
-Only Short string literals are converted.
+Only short string literals are converted.
 
 Following escape sequences are supported.
 
