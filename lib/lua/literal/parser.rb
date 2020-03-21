@@ -88,7 +88,8 @@ module Lua
 
       rule(:decimal_float) {
         decimal_integer >> str('.') >> decimal_integer? >> decimal_exponent.maybe |
-        decimal_integer? >> str('.') >> decimal_integer >> decimal_exponent.maybe
+        decimal_integer? >> str('.') >> decimal_integer >> decimal_exponent.maybe |
+        decimal_integer >> decimal_exponent
       }
 
       rule(:decimal_exponent) {
