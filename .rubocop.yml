@@ -40,6 +40,19 @@ Layout/MultilineOperationIndentation:
 Layout/SpaceAroundOperators:
   Enabled: true
 
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+  SpaceBeforeBlockParameters: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: no_space
+
+Lint/NumberConversion:
+  Enabled: true
+
 RSpec/EmptyLineAfterExample:
   Enabled: true
 
@@ -54,17 +67,15 @@ Style/BlockDelimiters:
   IgnoredMethods:
     - rule
 
-Style/Documentation:
-  Exclude:
-    - spec/**/*
-    - lib/lua/literal/version.rb
-
 Style/CommandLiteral:
   Enabled: true
   EnforcedStyle: percent_x
 
 Style/CommentAnnotation:
   Enabled: true
+
+Style/CollectionMethods:
+  Enabled: false
 
 Style/Copyright:
   Enabled: false
@@ -96,6 +107,9 @@ Style/MethodCallWithArgsParentheses:
     - to
     - not_to
 
+Style/MutableConstant:
+  Enabled: true
+
 Style/PercentLiteralDelimiters:
   Enabled: true
 
@@ -106,6 +120,12 @@ Style/RegexpLiteral:
   Enabled: true
   EnforcedStyle: slashes
   AllowInnerSlashes: true
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/StringHashKeys:
+  Enabled: true
 
 Style/StringLiterals:
   Enabled: true

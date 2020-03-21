@@ -6,6 +6,23 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+# Offense count: 3
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'lib/lua/literal/converter.rb'
+    - 'lib/lua/literal/transform.rb'
+    - 'lib/lua/literal/version.rb'
+
+# Offense count: 2
+# Configuration parameters: RequireForNonPublicMethods.
+Style/DocumentationMethod:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'lib/lua/literal/converter.rb'
+
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
