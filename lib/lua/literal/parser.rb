@@ -137,11 +137,11 @@ module Lua
       }
 
       rule(:decimal_sequence) {
-        esc >> decimal_digit.repeat(3, 3).as(:decimal_sequence)
+        esc >> decimal_digit.repeat(1, 3).as(:decimal_sequence)
       }
 
       rule(:unicode_sequence) {
-        esc >> match('[uU]') >> (str('{') >> hexadecimal_digit.repeat(1) >> str('}') | hexadecimal_digit.repeat(1)).as(:unicode_sequence)
+        esc >> match('[uU]') >> str('{') >> hexadecimal_digit.repeat(1).as(:unicode_sequence) >> str('}')
       }
 
       rule(:raw_character) {
