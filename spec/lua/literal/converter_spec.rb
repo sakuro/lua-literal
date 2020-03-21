@@ -102,7 +102,7 @@ RSpec.describe Lua::Literal::Converter do
       expect(converter.convert('{["a"] = 0, [3.14] = "pi"}')).to eq('a' => 0, 3.14 => 'pi') # rubocop:disable Style/StringHashKeys
     end
 
-    it 'converts name keys to `Symbol`s"' do
+    it 'converts name keys to `Symbol`s' do
       expect(converter.convert('{a = 1, b = 2, c = {d = 3}}')).to eq({a: 1, b: 2, c: {d: 3}})
     end
 
