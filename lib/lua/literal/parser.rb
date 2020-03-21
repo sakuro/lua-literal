@@ -66,12 +66,13 @@ module Lua
 
       # numeral
       rule(:numeral) {
-        str('-').maybe >> decimal_numeral
+        decimal_numeral
         # TODO: hexadecimal_numeral
       }
 
       rule(:decimal_numeral) {
-        decimal_float.as(:float) | decimal_integer.as(:integer)
+        (str('-').maybe >> decimal_float).as(:float) |
+        (str('-').maybe >> decimal_integer).as(:integer)
       }
 
       rule(:decimal_figure) {
