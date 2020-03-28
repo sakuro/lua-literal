@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'lua/literal'
 require 'lua/literal/converter'
 
 RSpec.describe Lua::Literal::Converter do
@@ -108,6 +109,42 @@ RSpec.describe Lua::Literal::Converter do
 
     it 'converts value only fields to integer indexed values' do
       expect(converter.convert('{"a", "b", {c = 10}}')).to eq(1 => 'a', 2 => 'b', 3 => {c: 10})
+    end
+
+    it 'concatenates two literal strings' do
+      expect(converter.convert('"a" .. "b"')).to eq('ab')
+    end
+
+    it 'concatenates integer and string' do
+      expect(converter.convert('42 .. "X"')).to eq('42X')
+    end
+
+    it 'concatenates string and integer' do
+      expect(converter.convert('"X" .. 42')).to eq('X42')
+    end
+
+    it 'concatenates float and string' do
+      expect(converter.convert('3.14e2 .. "X"')).to eq('314.0X')
+    end
+
+    it 'concatenates string and float' do
+      expect(converter.convert('"X" .. 3.14e2')).to eq('X314.0')
+    end
+
+    it 'concatenates float and integer' do
+      expect(converter.convert('3.14e2 .. 42')).to eq('314.042')
+    end
+
+    it 'concatenates integer and float' do
+      expect(converter.convert('42 .. 3.14e2')).to eq('42314.0')
+    end
+
+    it 'raises error when concatenating non-scalar values on LHS' do
+      expect { converter.convert('[1] .. "b"') }.to raise_error(Lua::Literal::ParseError)
+    end
+
+    it 'raises error when concatenating non-scalar values on RHS' do
+      expect { converter.convert('"a" .. {}') }.to raise_error(Lua::Literal::ParseError)
     end
   end
 end

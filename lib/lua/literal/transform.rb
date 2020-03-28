@@ -57,6 +57,10 @@ module Lua
         vs.join
       }
 
+      rule(string_concatenation: subtree(:v)) {
+        [v[:lhs], v[:rhs]].join
+      }
+
       rule('nil') {
         nil
       }

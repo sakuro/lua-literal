@@ -60,6 +60,10 @@ Lua's tables are converted to Ruby's `Hash`.
 
 Short comments are recognized and removed.
 
+### String concatenation
+
+This is not strictly a literal expression but supported for convenience.
+
 ## Unsupported literals
 
 * Hexadecimal numerals.
