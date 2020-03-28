@@ -187,6 +187,12 @@ module Lua
         (space | comment).repeat
       }
 
+      # Parses the given argument as a Lua literal expression
+      #
+      # See {file:README.md} for supported syntax.
+      # @param [String, Parslet::Source] lua_literal Lua literal expression
+      # @return [Hash, Array, Parslet::Slice] PORO (Plain old Ruby object) result tree
+      # @see {::Parslet::Parser#parse}
       def parse(lua_literal)
         super(lua_literal)
       rescue Parslet::ParseFailed
