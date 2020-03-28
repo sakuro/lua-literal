@@ -44,12 +44,17 @@ module Lua
         space? >>
         (
           table_constructor |
-          literal_nil |
-          literal_false |
-          literal_true |
-          numeral |
-          literal_string
+          string_concatenation |
+          scalar
         ) >> space?
+      }
+
+      rule(:scalar) {
+        literal_nil |
+        literal_false |
+        literal_true |
+        numeral |
+        literal_string
       }
 
       rule(:literal_nil) {
@@ -157,6 +162,10 @@ module Lua
         match('[0-9]')
       }
 
+      rule(:string_concatenation) {
+        (scalar.as(:lhs) >> space? >> str('..') >> space? >> scalar.as(:rhs)).as(:string_concatenation)
+      }
+
       rule(:name) {
         (match('[A-Za-z_]') >> match('[A-Za-z_0-9]').repeat).as(:name)
       }
@@ -177,6 +186,12 @@ module Lua
       rule(:space?) {
         (space | comment).repeat
       }
+
+      def parse(lua_literal)
+        super(lua_literal)
+      rescue Parslet::ParseFailed
+        raise Lua::Literal::ParseError
+      end
     end
   end
 end

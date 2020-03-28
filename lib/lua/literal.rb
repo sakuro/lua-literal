@@ -8,5 +8,6 @@ require 'lua/literal/transform'
 module Lua
   module Literal
     class Error < StandardError; end
+    class ParseError < Error; end
   end
 end
